@@ -5,12 +5,12 @@ import Home from "./pages/Home";
 import Projetos from "./pages/Projetos";
 import Skills from "./pages/Skills";
 import Sobre from "./pages/Sobre";
-import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Header />
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
