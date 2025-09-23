@@ -1,12 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import { X } from "lucide-react";
 import { ButtonMenu } from "./ButtonMenu";
+import CreativeBackground from "./CreativeBackground";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('overflow-hidden');
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }, [isOpen]);
 
   return (
     <header className="w-full bg-zinc-950">
@@ -82,28 +93,30 @@ function Navbar() {
 
           {/* pagina hamburguer */}
           {isOpen && (
-            <div className="fixed inset-0 z-50 flex flex-col items-center justify-center space-y-8 bg-black text-4xl font-bold text-white transition-all duration-500">
+            <div className="fixed inset-0 z-50 flex flex-col items-center justify-center space-y-4  text-4xl font-bold text-white transition-all duration-500">
               <button
                 onClick={() => setIsOpen(false)}
                 className="absolute top-6 right-6 cursor-pointer transition hover:text-gray-400"
               >
-                <X size={40} />
+                <X size={30} />
               </button>
-              <Link onClick={() => setIsOpen(false)} to="/">
+              <Link className="text-shadow-white tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 hover:[text-shadow:0_0_2.5px_var(--tw-shadow-color)]" onClick={() => setIsOpen(false)} to="/">
                 HOME
               </Link>
-              <Link onClick={() => setIsOpen(false)} to="/">
+              <Link className="tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 hover:shadow-gray-500 hover:[text-shadow:0_0_2.5px_var(--tw-shadow-color)]" onClick={() => setIsOpen(false)} to="/">
                 ABOUT
               </Link>
-              <Link onClick={() => setIsOpen(false)} to="/">
+              <Link className="tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 hover:[text-shadow:0_0_2.5px_var(--tw-shadow-color)]" onClick={() => setIsOpen(false)} to="/">
                 WORK
               </Link>
-              <Link onClick={() => setIsOpen(false)} to="/">
+              <Link className="tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 hover:[text-shadow:0_0_2.5px_var(--tw-shadow-color)]" onClick={() => setIsOpen(false)} to="/">
                 STATISTICS
               </Link>
-              <Link onClick={() => setIsOpen(false)} to="/">
+              <Link className="tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 " onClick={() => setIsOpen(false)} to="/">
                 CONTACT
               </Link>
+              
+              <CreativeBackground />
             </div>
           )}
 

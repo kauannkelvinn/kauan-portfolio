@@ -2,10 +2,43 @@
 
 @layer base {
   body {
-    @apply bg-zinc-950 text-white min-h-screen;
+    @apply min-h-screen bg-zinc-950 text-white;
   }
 }
 
 * {
   font-family: "Sora", sans-serif;
+}
+
+.background-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      100rem circle at var(--x) var(--y),
+      rgba(255, 0, 0, 0.04),
+      transparent 80%
+    ),
+    rgb(10, 10, 10);
+}
+
+.background-spotlight::after {
+  content: ''; /* Essencial para pseudo-elementos */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* Aplicamos o filtro de ruído SOMENTE nesta camada */
+  filter: url(#noiseFilter);
+
+  /* A MÁGICA FINAL: Controlamos a intensidade do ruído com a opacidade */
+  /* Experimente valores entre 0.02 e 0.1 para um efeito sutil */
+  opacity: 0.10;
 }
