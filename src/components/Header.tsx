@@ -11,24 +11,26 @@ function Navbar() {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add('overflow-hidden');
+      document.body.classList.add("overflow-hidden");
     }
-
     return () => {
-      document.body.classList.remove('overflow-hidden');
-    }
+      document.body.classList.remove("overflow-hidden");
+    };
   }, [isOpen]);
 
   return (
-    <header className="w-full bg-zinc-950">
-      <div className="max-7xl mx-auto flex items-center justify-between px-7 py-3">
-        <Link to="/" className="text-lg font-bold text-white">
-          <img src={Logo} alt="Logo" />
-        </Link>
+    <>
+      <header className="fixed top-0 left-0 z-[60] w-full bg-zinc-950">
+        <div className="max-7xl mx-auto flex items-center justify-between px-7 py-3">
+          <Link to="/" className="text-lg font-bold text-white">
+            <img src={Logo} alt="Logo" />
+          </Link>
 
-        <nav>
-          <ul className="flex items-center space-x-8">
-            <div className="hidden space-x-6 text-sm text-white md:flex">
+          <nav className="flex items-center space-x-8">
+            {/* ======================================================= */}
+            {/* 1. NAVEGAÇÃO DE DESKTOP - Escondida no mobile         */}
+            {/* ======================================================= */}
+            <ul className="hidden space-x-6 text-sm text-white md:flex">
               <li>
                 <a
                   href="/"
@@ -77,99 +79,99 @@ function Navbar() {
                   Certificados
                 </a>
               </li>
-            </div>
+            </ul>
 
-            {/* Botao Hamburguer */}
+            {/* ======================================================= */}
+            {/* 2. BOTÃO HAMBURGUER - Escondido no desktop (erro corrigido) */}
+            {/* ======================================================= */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hiden group relative flex h-5 w-5 cursor-pointer flex-col items-center justify-between"
+              className="group relative flex h-5 w-5 cursor-pointer flex-col items-center justify-between md:hidden"
               aria-label="Toggle menu"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <ButtonMenu isOpen={isOpen} isHovered={isHovered}/>
+              <ButtonMenu isOpen={isOpen} isHovered={isHovered} />
             </button>
-          </ul>
+          </nav>
+        </div>
+      </header>
 
-          {/* pagina hamburguer */}
-          {isOpen && (
-            <div className="fixed inset-0 z-50 flex flex-col items-center justify-center space-y-4  text-4xl font-bold text-white transition-all duration-500">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="absolute top-6 right-6 cursor-pointer transition hover:text-gray-400"
-              >
-                <X size={30} />
-              </button>
-              <Link className="text-shadow-white tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 hover:[text-shadow:0_0_2.5px_var(--tw-shadow-color)]" onClick={() => setIsOpen(false)} to="/">
-                HOME
-              </Link>
-              <Link className="tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 hover:shadow-gray-500 hover:[text-shadow:0_0_2.5px_var(--tw-shadow-color)]" onClick={() => setIsOpen(false)} to="/">
-                ABOUT
-              </Link>
-              <Link className="tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 hover:[text-shadow:0_0_2.5px_var(--tw-shadow-color)]" onClick={() => setIsOpen(false)} to="/">
-                WORK
-              </Link>
-              <Link className="tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 hover:[text-shadow:0_0_2.5px_var(--tw-shadow-color)]" onClick={() => setIsOpen(false)} to="/">
-                STATISTICS
-              </Link>
-              <Link className="tracking-[-0.08em] font-extrabold text-6xl transition-all ease-in-out duration-100 hover:text-gray-500 " onClick={() => setIsOpen(false)} to="/">
-                CONTACT
-              </Link>
-              
-              <CreativeBackground />
-            </div>
-          )}
+      {/* ================================================================ */}
+      {/* 3. PÁGINA HAMBURGUER (MENU DE TELA CHEIA) - Sem alterações aqui */}
+      {/* ================================================================ */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center space-y-4 text-4xl font-bold text-white transition-all duration-500">
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-6 right-6 cursor-pointer transition hover:text-gray-400"
+          >
+            <X size={30} />
+          </button>
 
-          {/*menu mobile*/}
-          {isOpen && (
-            <div className="flex flex-col items-center space-y-3 border-t border-zinc-800 bg-zinc-900 py-4 text-sm text-white md:hidden">
-              <Link
-                onClick={() => setIsOpen(false)}
-                to="/"
-                className="w-full text-center transition hover:text-green-400"
-              >
-                Home
-              </Link>
-              <Link
-                onClick={() => setIsOpen(false)}
-                to="/sobre"
-                className="w-full text-center transition hover:text-green-400"
-              >
-                Sobre
-              </Link>
-              <Link
-                onClick={() => setIsOpen(false)}
-                to="/projetos"
-                className="w-full text-center transition hover:text-green-400"
-              >
-                Projetos
-              </Link>
-              <Link
-                onClick={() => setIsOpen(false)}
-                to="/skills"
-                className="w-full text-center transition hover:text-green-400"
-              >
-                Skills
-              </Link>
-              <Link
-                onClick={() => setIsOpen(false)}
-                to="/contato"
-                className="w-full text-center transition hover:text-green-400"
-              >
-                Contato
-              </Link>
-              <Link
-                onClick={() => setIsOpen(false)}
-                to="/certificados"
-                className="w-full text-center transition hover:text-green-400"
-              >
-                Certificados
-              </Link>
+          {/* Links do menu de tela cheia */}
+          <Link
+            className="text-6xl font-extrabold tracking-[-0.08em] transition-all duration-100 ease-in-out text-shadow-white hover:text-gray-400"
+            onClick={() => setIsOpen(false)}
+            to="/"
+          >
+            HOME
+          </Link>
+          <Link
+            className="text-6xl font-extrabold tracking-[-0.08em] transition-all duration-100 ease-in-out hover:text-gray-400"
+            onClick={() => setIsOpen(false)}
+            to="/"
+          >
+            ABOUT
+          </Link>
+          <Link
+            className="text-6xl font-extrabold tracking-[-0.08em] transition-all duration-100 ease-in-out hover:text-gray-400"
+            onClick={() => setIsOpen(false)}
+            to="/"
+          >
+            WORK
+          </Link>
+          <Link
+            className="text-6xl font-extrabold tracking-[-0.08em] transition-all duration-100 ease-in-out hover:text-gray-400"
+            onClick={() => setIsOpen(false)}
+            to="/"
+          >
+            STATISTICS
+          </Link>
+          <Link
+            className="text-6xl font-extrabold tracking-[-0.08em] transition-all duration-100 ease-in-out hover:text-gray-400"
+            onClick={() => setIsOpen(false)}
+            to="/"
+          >
+            CONTACT
+          </Link>
+
+          <CreativeBackground />
+
+          {/* RODAPE */}
+          <footer className="absolute inset-x-0 bottom-0 px-12 pb-8">
+            <div className="flex w-full items-center justify-between">
+              <div className="font-mono text-xs tracking-widest uppercase">
+                ©2025 ALL RIGHTS RESERVED
+              </div>
+
+              <div className="font mono flex items-center space-x-6 text-xs tracking-widest text-white uppercase">
+                <a href="#">LINKEDIN</a>
+                <a
+                  href="https://www.instagram.com/kauannkelvin/"
+                  target="_blank"
+                >
+                  INSTAGRAM
+                </a>
+                <a href="#">GITHUB</a>
+              </div>
             </div>
-          )}
-        </nav>
-      </div>
-    </header>
+          </footer>
+        </div>
+      )}
+
+     
+    </>
   );
 }
 
