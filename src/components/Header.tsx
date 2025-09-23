@@ -134,7 +134,7 @@ function Navbar() {
                 to="/"
               >
                 CONTACT
-              </Link>
+              </Link>1
 
               <CreativeBackground />
 
