@@ -2,14 +2,29 @@ import { Link } from "react-router-dom";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { projetos } from "../data/projects";
 
-const projetosDestaque = projetos.slice(0, 3);
-
 export default function Home() {
+  const projetosDestaque = projetos.slice(0, 3);
+
   return (
     <main className="bg-zinc-950 text-white">
       {/* HERO / INTRODUÇÃO */}
-      <section className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-        <h1 className="mb-4 text-5xl font-extrabold text-emerald-400 drop-shadow md:text-7xl">
+      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-red-900 px-6 text-white">
+        {/*   Aqui posso adicionar uma imagem de fundo   */}
+
+        {/* Blocos Superiores Direitos */}
+        <div className="absolute gap-20 top-4 right-50 z-10 flex space-y-4">
+          <div className="hidden md:block p-4 text-xs font-light tracking-wider uppercase">
+            <p className="text-start">UXUI DESIGNER</p>
+            <p className="text-start">SOFTWARE ENGINEER</p>
+          </div>
+          <div className="hidden md:block p-4 text-xs font-light tracking-wider uppercase">
+            <p className="text-start">DONE</p>
+            <p className="text-start">IS BETTER THAN PERFECT.</p>
+          </div>
+        </div>
+
+        {/* 
+        <h1 className="mb-4 text-5xl font-extrabold drop-shadow md:text-7xl">
           Kauan Kelvin
         </h1>
         <p className="mb-6 max-w-2xl text-lg leading-relaxed text-zinc-300 md:text-2xl">
@@ -19,10 +34,11 @@ export default function Home() {
         </p>
         <a
           href="#projetos"
-          className="rounded-xl bg-emerald-500 px-6 py-3 font-medium text-white transition hover:bg-emerald-600"
+          className="rounded-xl bg-black px-6 py-3 font-medium text-white transition hover:bg-emerald-600"
         >
           Ver projetos
         </a>
+        */}
       </section>
 
       {/* SOBRE MIM */}

@@ -20,7 +20,7 @@ function Navbar() {
   }, [isOpen]);
 
   return (
-    <header className="w-full bg-zinc-950">
+    <header className="fixed top-0 left-0 w-full z-50">
       <div className="max-7xl mx-auto flex items-center justify-between px-7 py-3">
         <Link to="/" className="text-lg font-bold text-white">
           <img src={Logo} alt="Logo" />
@@ -28,57 +28,6 @@ function Navbar() {
 
         <nav>
           <ul className="flex items-center space-x-8">
-            <div className="hidden space-x-6 text-sm text-white md:flex">
-              <li>
-                <a
-                  href="/"
-                  className="text-sm font-light tracking-wider text-zinc-300 uppercase transition-colors duration-300 hover:text-emerald-400"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/sobre"
-                  className="text-sm font-light tracking-wider text-zinc-300 uppercase transition-colors duration-300 hover:text-emerald-400"
-                >
-                  Sobre
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/projetos"
-                  className="text-sm font-light tracking-wider text-zinc-300 uppercase transition-colors duration-300 hover:text-emerald-400"
-                >
-                  Projetos
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/skills"
-                  className="text-sm font-light tracking-wider text-zinc-300 uppercase transition-colors duration-300 hover:text-emerald-400"
-                >
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contato"
-                  className="text-sm font-light tracking-wider text-zinc-300 uppercase transition-colors duration-300 hover:text-emerald-400"
-                >
-                  Contato
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/certificados"
-                  className="text-sm font-light tracking-wider text-zinc-300 uppercase transition-colors duration-300 hover:text-emerald-400"
-                >
-                  Certificados
-                </a>
-              </li>
-            </div>
-
             {/* Botao Hamburguer */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -134,7 +83,7 @@ function Navbar() {
                 to="/"
               >
                 CONTACT
-              </Link>1
+              </Link>
 
               <CreativeBackground />
 
